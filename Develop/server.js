@@ -15,7 +15,7 @@ app.get('/notes', (req, res) => {
   res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
-// GET /api/notes returns notes
+// GET /api/notes should read the db.json file and return all saved notes as JSON.
 app.get('/api/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './db/db.json'));
 });
