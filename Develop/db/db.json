@@ -1,6 +1,12 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title": "Visit Bank",
+        "text": "Deposit check",
+        "note_id": "8eb5"
+    },
+    {
+        "title": "Go to Costco",
+        "text": "buy groceries and contacts",
+        "note_id": "0913"
     }
 ]
