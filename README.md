@@ -2,7 +2,7 @@
 
 ## Description
 
-This project allows the user to add Notes (containing a title and text).  The user can also delete a Note once completed.
+This project allows the user to add Notes (containing a title and text).  The user can also delete a Note once completed.  This project is hosted on Heroku.
 
 ## Table of Contents
 
@@ -19,13 +19,9 @@ git clone https://github.com/bryanjeremysmith/note-taker.git
 
 ## Usage
 
-Server Side
+Visit the Heroku URL
 
-<pre>node server.js</pre>
-
-Client Side
-
-Open http://localhost:3001/
+https://note-taker-1981.herokuapp.com/notes
 
 ## License 
 
