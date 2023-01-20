@@ -43,25 +43,25 @@ app.post('/api/notes', (req, res) => {
 
     // Obtain existing reviews
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
-    if (err) {
-        console.error(err);
-    } else {
-        // Convert string into JSON object
-        const parsedNotes = JSON.parse(data);
-  
-        // Add a new review
-        parsedNotes.push(newNote);
-  
-        // Write updated reviews back to the file
-        fs.writeFile(
-            './db/db.json',
-            JSON.stringify(parsedNotes, null, 4),
-            (writeErr) =>
-              writeErr
-                ? console.error(writeErr)
-                : console.info('Successfully updated notes!')
-          );
-        }
+      if (err) {
+          console.error(err);
+      } else {
+          // Convert string into JSON object
+          const parsedNotes = JSON.parse(data);
+    
+          // Add a new review
+          parsedNotes.push(newNote);
+    
+          // Write updated reviews back to the file
+          fs.writeFile(
+              './db/db.json',
+              JSON.stringify(parsedNotes, null, 4),
+              (writeErr) =>
+                writeErr
+                  ? console.error(writeErr)
+                  : console.info('Successfully updated notes!')
+            );
+      }
     });
 
     const response = {
@@ -75,6 +75,34 @@ app.post('/api/notes', (req, res) => {
     res.status(500).json('Error in posting note');
   }
 });
+
+  // DELETE /api/notes/:id should receive a query parameter containing the id of a note to delete.
+  app.delete('/api/notes/:id', (req, res) => {
+    // Obtain existing reviews
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json('Error in deleting note');
+      } else {
+        // exclude note if it's id matches the parameter
+        const filteredNotes = JSON.parse(data).filter(note => note.id !== req.params.id);
+        // write back to the database the excluded note
+        fs.writeFile('./db/db.json', JSON.stringify(filteredNotes, null, 4),
+          (writeErr) =>
+            writeErr
+              ? console.error(writeErr)
+              : console.info('Successfully updated notes!')
+        );
+        const response = {
+          status: 'success',
+          body: 'note id ' + req.params.id + ' deleted',
+        };
+    
+        console.log(response);
+        res.status(201).json(response);
+      }
+    });
+  });
 
 // GET * should return the index.html file.
 app.get('*', (req, res) => {
