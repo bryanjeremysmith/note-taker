@@ -23,6 +23,8 @@ Visit the Heroku URL
 
 https://note-taker-1981.herokuapp.com/notes
 
+![screencapture-note-taker-1981-herokuapp-notes-2023-01-20-12_26_48](https://user-images.githubusercontent.com/113069298/213799980-65e3f0be-2263-421f-a181-b1615b4e9b88.png)
+
 ## License 
 
 This project is covered under the following license: MIT License
